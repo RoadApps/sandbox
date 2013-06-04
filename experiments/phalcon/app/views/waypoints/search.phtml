@@ -1,0 +1,68 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo Tag::linkTo(array("waypoints/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo Tag::linkTo(array("waypoints/new", "Create ")); ?>
+        </td>
+    <tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>DeliveryMap</th>
+            <th>ServiceTime</th>
+            <th>TimeWindows</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Modified</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $waypoint) { ?>
+        <tr>
+            <td><?php echo $waypoint->id ?></td>
+            <td><?php echo $waypoint->name ?></td>
+            <td><?php echo $waypoint->location ?></td>
+            <td><?php echo $waypoint->latitude ?></td>
+            <td><?php echo $waypoint->longitude ?></td>
+            <td><?php echo $waypoint->deliveryMap ?></td>
+            <td><?php echo $waypoint->serviceTime ?></td>
+            <td><?php echo $waypoint->timeWindows ?></td>
+            <td><?php echo $waypoint->priority ?></td>
+            <td><?php echo $waypoint->status ?></td>
+            <td><?php echo $waypoint->created ?></td>
+            <td><?php echo $waypoint->modified ?></td>
+            <td><?php echo Tag::linkTo(array("waypoints/edit/" . $waypoint->id, "Edit")); ?></td>
+            <td><?php echo Tag::linkTo(array("waypoints/delete/" . $waypoint->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo Tag::linkTo("waypoints/search", "First") ?></td>
+                        <td><?php echo Tag::linkTo("waypoints/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo Tag::linkTo("waypoints/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo Tag::linkTo("waypoints/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tbody>
+</table>

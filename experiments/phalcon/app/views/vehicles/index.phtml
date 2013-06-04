@@ -1,0 +1,95 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent() ?>
+
+<div align="right">
+    <?php echo Tag::linkTo(array("vehicles/new", "Create vehicles")) ?>
+</div>
+
+<?php echo Tag::form(array("vehicles/search", "autocomplete" => "off")) ?>
+
+<div align="center">
+    <h1>Search vehicles</h1>
+</div>
+
+<table>
+    <tr>
+        <td align="right">
+            <label for="id">Id</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("id", "type" => "numeric")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="name">Name</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("name", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="maxCapacityMap">MaxCapacityMap</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("maxCapacityMap", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="timeWindow">TimeWindow</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("timeWindow", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="maxWorkingTime">MaxWorkingTime</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("maxWorkingTime", "type" => "numeric")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="maxDrivingTime">MaxDrivingTime</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("maxDrivingTime", "type" => "numeric")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="status">Status</label>
+        </td>
+        <td align="left">
+                <?php echo Tag::textField(array("status")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="created">Created</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("created", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="modified">Modified</label>
+        </td>
+        <td align="left">
+            <?php echo Tag::textField(array("modified", "size" => 30)) ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><?php echo Tag::submitButton("Search") ?></td>
+    </tr>
+</table>
+
+</form>

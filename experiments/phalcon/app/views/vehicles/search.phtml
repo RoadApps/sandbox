@@ -1,0 +1,62 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo Tag::linkTo(array("vehicles/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo Tag::linkTo(array("vehicles/new", "Create ")); ?>
+        </td>
+    <tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>MaxCapacityMap</th>
+            <th>TimeWindow</th>
+            <th>MaxWorkingTime</th>
+            <th>MaxDrivingTime</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Modified</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $vehicle) { ?>
+        <tr>
+            <td><?php echo $vehicle->id ?></td>
+            <td><?php echo $vehicle->name ?></td>
+            <td><?php echo $vehicle->maxCapacityMap ?></td>
+            <td><?php echo $vehicle->timeWindow ?></td>
+            <td><?php echo $vehicle->maxWorkingTime ?></td>
+            <td><?php echo $vehicle->maxDrivingTime ?></td>
+            <td><?php echo $vehicle->status ?></td>
+            <td><?php echo $vehicle->created ?></td>
+            <td><?php echo $vehicle->modified ?></td>
+            <td><?php echo Tag::linkTo(array("vehicles/edit/" . $vehicle->id, "Edit")); ?></td>
+            <td><?php echo Tag::linkTo(array("vehicles/delete/" . $vehicle->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo Tag::linkTo("vehicles/search", "First") ?></td>
+                        <td><?php echo Tag::linkTo("vehicles/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo Tag::linkTo("vehicles/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo Tag::linkTo("vehicles/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tbody>
+</table>
